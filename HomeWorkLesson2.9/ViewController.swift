@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         animationLabel.text = animation.description
-        animationView.layer.cornerRadius = 10
     }
     
     //MARK: - IB Actions
