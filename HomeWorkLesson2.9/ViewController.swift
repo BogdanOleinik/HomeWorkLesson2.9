@@ -14,11 +14,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var animationLabel: UILabel!
     
     // MARK: - Private properties
-    var animation = Animation.getRandomAnimation()
+    private var animation = Animation.getRandomAnimation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         animationLabel.text = animation.description
+        animationView.layer.cornerRadius = 10
     }
     
     //MARK: - IB Actions
@@ -28,15 +29,17 @@ class ViewController: UIViewController {
         
         //  Параметры анимации
         animationView.animation = animation.preset
-        animationView.curve = animation.curve
         animationView.force = CGFloat(animation.force)
         animationView.duration = CGFloat(animation.duration)
         animationView.delay = CGFloat(animation.delay)
+        animationView.curve = animation.curve
         
         // Запуск анимации
         animationView.animate()
+        animation = Animation.getRandomAnimation()
         
-    
+        sender.setTitle("Next: \(animation.preset)", for: .normal)
+
     }
 }
 
